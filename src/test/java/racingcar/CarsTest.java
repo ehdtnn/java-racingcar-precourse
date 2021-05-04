@@ -21,5 +21,14 @@ class CarsTest {
         assertThat(cars.getSize()).isEqualTo(3);
     }
 
+    @Test
+    void start() {
+        for (int i = 0; i < cars.getSize(); i++) {
+            cars.start();
+            Message.showResultMessage(cars);
+            Message.showNextLine();
+        }
+        Message.showWinnerMessage(cars.getWinner());
+    }
 }
 
