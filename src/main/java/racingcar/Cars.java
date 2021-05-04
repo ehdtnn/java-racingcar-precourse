@@ -10,6 +10,7 @@ public class Cars {
     public static final String CAR_NAME_DELIMITER = ",";
 
     private final List<Car> cars;
+    private String winner;
 
     public Cars(String input) {
         String[] carNames = input.split(CAR_NAME_DELIMITER);
@@ -34,6 +35,32 @@ public class Cars {
         return cars.get(i);
     }
 
+    public String getWinner() {
+        for (Car car : cars) {
+            if (car.isWinner(getMaxPosition())) {
+                appendWinner(car.getCarName());
+            }
+        }
+        return winner;
+    }
+
+    public void appendWinner(String name) {
+        if (winner == null) {
+            winner = name;
+            return;
+        }
+        winner += "," + name;
+    }
+
+    public int getMaxPosition() {
+        int max = 0;
+        for (Car car : cars) {
+            if (car.getCarPosition() >= max) {
+                max = car.getCarPosition();
+            }
+        }
+        return max;
+    }
 
 }
 

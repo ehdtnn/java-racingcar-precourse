@@ -24,12 +24,12 @@ public class Car {
         return position.getPosition();
     }
 
-    private int addPosition() {
-        return position.addPosition();
-    }
-
     private boolean isMovable(int random) {
         return random >= MIN_MOVABLE && random <= MAX_MOVABLE;
+    }
+
+    private int addPosition() {
+        return position.addPosition();
     }
 
     public String getCarName() {
@@ -38,5 +38,9 @@ public class Car {
 
     public int getCarPosition() {
         return position.getPosition();
+    }
+
+    public boolean isWinner(int max) {
+        return max <= position.getPosition();
     }
 }
