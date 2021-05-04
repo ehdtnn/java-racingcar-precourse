@@ -1,21 +1,42 @@
 package racingcar;
 
 public class Car {
-    public static final int POSITION_INIT_VAL = 0;
+    public static final int MIN_MOVABLE = 4;
+    public static final int MAX_MOVABLE = 9;
 
     private final CarName name;
-    private final CarPosition position;
+    private CarPosition position;
 
     public Car(String name) {
         this.name = new CarName(name);
-        this.position = new CarPosition(POSITION_INIT_VAL);
+        this.position = new CarPosition();
     }
 
-    public void move(int random) {
-        this.position.move(random);
+    public Car(String name, int position) {
+        this.name = new CarName(name);
+        this.position = new CarPosition(position);
     }
 
-    public int getPosition() {
-        return this.position.getPosition();
+    public int move(int random) {
+        if (isMovable(random)) {
+            return addPosition();
+        }
+        return position.getPosition();
+    }
+
+    private int addPosition() {
+        return position.addPosition();
+    }
+
+    private boolean isMovable(int random) {
+        return random >= MIN_MOVABLE && random <= MAX_MOVABLE;
+    }
+
+    public String getCarName() {
+        return name.getName();
+    }
+
+    public int getCarPosition() {
+        return position.getPosition();
     }
 }
