@@ -10,7 +10,6 @@ public class Cars {
     public static final String CAR_NAME_DELIMITER = ",";
 
     private final List<Car> cars;
-    private Map<String, Integer> map;
 
     public Cars(String input) {
         String[] carNames = input.split(CAR_NAME_DELIMITER);
